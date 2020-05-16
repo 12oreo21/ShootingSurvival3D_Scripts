@@ -193,6 +193,11 @@ public class PlayerMove : MonoBehaviour
         paRigidbody.AddForce(jumpForce);
     }
 
+    bool jumpForwardDoOnce = true;
+    public void JumpForwardDoOnceEvent()
+    {
+        jumpForwardDoOnce = true;
+    }
 
 
     public void JumpMove()
@@ -420,20 +425,27 @@ public class PlayerMove : MonoBehaviour
 
     public void JumpForwardInWalkMove()
     {
-        StopSoundOfWalkRun(0);
-        StopSoundOfWalkRun(1);
-        Idle = false;
-        animator.SetTrigger("JumpForwardInWalk");
+        if (jumpForwardDoOnce)
+        {
+            StopSoundOfWalkRun(0);
+            StopSoundOfWalkRun(1);
+            animator.SetTrigger("JumpForwardInWalk");
+            jumpForwardDoOnce = false;
+        }
+            
     }
 
 
 
     public void JumpForwardInRunMove()
     {
-        StopSoundOfWalkRun(0);
-        StopSoundOfWalkRun(1);
-        Idle = false;
-        animator.SetTrigger("JumpForwardInRun");
+        if (jumpForwardDoOnce)
+        {
+            StopSoundOfWalkRun(0);
+            StopSoundOfWalkRun(1);
+            animator.SetTrigger("JumpForwardInRun");
+            jumpForwardDoOnce = false;
+        }
     }
 
 
@@ -726,19 +738,27 @@ public class PlayerMove : MonoBehaviour
 
     public void PistolJumpForwardInWalkMove()
     {
-        StopSoundOfWalkRun(0);
-        StopSoundOfWalkRun(1);
-        Idle = false;
-        animator.SetTrigger("PistolJumpForwardInWalk");
+        if (jumpForwardDoOnce)
+        {
+            StopSoundOfWalkRun(0);
+            StopSoundOfWalkRun(1);
+            animator.SetTrigger("PistolJumpForwardInWalk");
+            jumpForwardDoOnce = false;
+        }
+            
     }
 
 
     public void PistolJumpForwardInRunMove()
     {
-        StopSoundOfWalkRun(0);
-        StopSoundOfWalkRun(1);
-        Idle = false;
-        animator.SetTrigger("PistolJumpForwardInRun");
+        if (jumpForwardDoOnce)
+        {
+            StopSoundOfWalkRun(0);
+            StopSoundOfWalkRun(1);
+            animator.SetTrigger("PistolJumpForwardInRun");
+            jumpForwardDoOnce = false;
+        }
+            
     }
 
 
@@ -997,16 +1017,6 @@ public class PlayerMove : MonoBehaviour
         {
             translateForward = 1f;
         }
-
-
-
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            animator.SetBool("Dying", true);
-            
-        }
-
     }
 
 
@@ -1043,10 +1053,5 @@ public class PlayerMove : MonoBehaviour
             spineRotY = -6.35f;
             spineRotZ = -2.6f;
         }
-
     }
-
-
-
-    
 }

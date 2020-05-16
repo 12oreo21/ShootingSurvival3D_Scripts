@@ -10,7 +10,6 @@ public class JumpButtonPress : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public bool Jump; //trueの時にPlayerがJumpする。"PlayerMove.cs"で利用。
 
-
     public void OnPointerDown(PointerEventData pointerEventData)
     {
         Jump = true;
